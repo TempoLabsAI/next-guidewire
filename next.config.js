@@ -3,7 +3,10 @@
 const nextConfig = {
     images: {
         domains: ['images.unsplash.com'],
-    }
+    },
+    sassOptions: {
+        includePaths: ['./node_modules'],
+    },
 };
 
 if (process.env.NEXT_PUBLIC_TEMPO) {
