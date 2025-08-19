@@ -1,4 +1,3 @@
-import { TempoInit } from "@/components/tempo-init";
 import Script from "next/script";
 import { JutroThemeClient } from "@/components/JutroThemeClient";
 import "./globals.css";
@@ -16,7 +15,6 @@ export default function RootLayout({
         <JutroThemeClient>
           {children}
         </JutroThemeClient>
-        <TempoInit />
       </body>
     </html>
   );
