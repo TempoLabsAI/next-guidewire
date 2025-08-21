@@ -11,66 +11,67 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: "DatePicker component from Jutro design system showcasing critical use cases and functionality."
-      }
-    }
+        component:
+          "DatePicker component from Jutro design system showcasing critical use cases and functionality.",
+      },
+    },
   },
   argTypes: {
     label: {
-      control: 'text',
-      defaultValue: 'Select Date'
+      control: "text",
+      defaultValue: "Select Date",
     },
     placeholder: {
-      control: 'text',
-      defaultValue: 'Choose a date...'
+      control: "text",
+      defaultValue: "Choose a date...",
     },
     required: {
-      control: 'boolean',
-      defaultValue: false
+      control: "boolean",
+      defaultValue: false,
     },
     disabled: {
-      control: 'boolean',
-      defaultValue: false
+      control: "boolean",
+      defaultValue: false,
     },
     readOnly: {
-      control: 'boolean',
-      defaultValue: false
+      control: "boolean",
+      defaultValue: false,
     },
     displayOnly: {
-      control: 'boolean',
-      defaultValue: false
+      control: "boolean",
+      defaultValue: false,
     },
     hideLabel: {
-      control: 'boolean',
-      defaultValue: false
+      control: "boolean",
+      defaultValue: false,
     },
     hideTodayButton: {
-      control: 'boolean',
-      defaultValue: false
+      control: "boolean",
+      defaultValue: false,
     },
     displayFormat: {
-      control: 'select',
-      options: ['vshort', 'short', 'long', 'abbreviated', 'full'],
-      defaultValue: 'short'
-    }
+      control: "select",
+      options: ["vshort", "short", "long", "abbreviated", "full"],
+      defaultValue: "short",
+    },
   },
   args: {
-    label: 'Select Date',
-    placeholder: 'Choose a date...',
+    label: "Select Date",
+    placeholder: "Choose a date...",
     required: false,
     disabled: false,
     readOnly: false,
     displayOnly: false,
     hideLabel: false,
     hideTodayButton: false,
-    displayFormat: 'short'
-  }
+    displayFormat: "short",
+  },
 };
 
 // Template for most stories
 const Template = (args: any) => {
   const [value, setValue] = useState(args.initialValue || null);
-  
+
   return (
     <Card className="p-6 max-w-md">
       <DatePicker
@@ -94,8 +95,8 @@ export const Required = {
   args: {
     required: true,
     label: "Birth Date",
-    placeholder: "MM/DD/YYYY"
-  }
+    placeholder: "MM/DD/YYYY",
+  },
 };
 
 // Story 3: With Initial Value
@@ -104,8 +105,8 @@ export const WithInitialValue = {
   args: {
     label: "Appointment Date",
     placeholder: "Select appointment date",
-    initialValue: { year: 2024, month: 12, day: 25 }
-  }
+    initialValue: { year: 2024, month: 12, day: 25 },
+  },
 };
 
 // Story 4: Disabled State
@@ -119,7 +120,7 @@ export const Disabled = (args: any) => (
   </Card>
 );
 Disabled.args = {
-  label: "System Generated Date"
+  label: "System Generated Date",
 };
 
 // Story 5: Read-only State
@@ -133,7 +134,7 @@ export const ReadOnly = (args: any) => (
   </Card>
 );
 ReadOnly.args = {
-  label: "Policy Start Date"
+  label: "Policy Start Date",
 };
 
 // Story 6: With Date Constraints
@@ -143,52 +144,86 @@ export const WithDateConstraints = {
     label: "Event Date",
     placeholder: "Select future date only",
     minDate: { year: 2024, month: 1, day: 1 },
-    maxDate: { year: 2025, month: 12, day: 31 }
-  }
+    maxDate: { year: 2025, month: 12, day: 31 },
+  },
 };
 
-// Story 7: Display Format Showcase
-export const DisplayFormats = () => (
-  <Card className="p-6 max-w-2xl">
-    <h3 className="text-lg font-semibold mb-4">Date Display Formats</h3>
-    <Flex direction="column" gap="medium">
-      <FlexItem>
-        <DatePicker
-          id="vshort-format"
-          label="Very Short Format"
-          displayFormat="vshort"
-          value={{ year: 2024, month: 3, day: 15 }}
-        />
-      </FlexItem>
-      <FlexItem>
-        <DatePicker
-          id="short-format"
-          label="Short Format"
-          displayFormat="short"
-          value={{ year: 2024, month: 3, day: 15 }}
-        />
-      </FlexItem>
-      <FlexItem>
-        <DatePicker
-          id="long-format"
-          label="Long Format"
-          displayFormat="long"
-          value={{ year: 2024, month: 3, day: 15 }}
-        />
-      </FlexItem>
-      <FlexItem>
-        <DatePicker
-          id="full-format"
-          label="Full Format"
-          displayFormat="full"
-          value={{ year: 2024, month: 3, day: 15 }}
-        />
-      </FlexItem>
-    </Flex>
+// Story 7: Very Short Format - Compact date display
+export const VeryShortFormat = (args: any) => (
+  <Card className="p-6 max-w-md">
+    <DatePicker
+      {...args}
+      displayFormat="vshort"
+      value={{ year: 2024, month: 3, day: 15 }}
+    />
   </Card>
 );
+VeryShortFormat.args = {
+  label: "Very Short Format",
+  placeholder: "Select date",
+};
 
-// Story 8: Validation Example
+// Story 8: Short Format - Standard date display
+export const ShortFormat = (args: any) => (
+  <Card className="p-6 max-w-md">
+    <DatePicker
+      {...args}
+      displayFormat="short"
+      value={{ year: 2024, month: 3, day: 15 }}
+    />
+  </Card>
+);
+ShortFormat.args = {
+  label: "Short Format",
+  placeholder: "Select date",
+};
+
+// Story 9: Long Format - Extended date display
+export const LongFormat = (args: any) => (
+  <Card className="p-6 max-w-md">
+    <DatePicker
+      {...args}
+      displayFormat="long"
+      value={{ year: 2024, month: 3, day: 15 }}
+    />
+  </Card>
+);
+LongFormat.args = {
+  label: "Long Format",
+  placeholder: "Select date",
+};
+
+// Story 10: Abbreviated Format - Month abbreviated
+export const AbbreviatedFormat = (args: any) => (
+  <Card className="p-6 max-w-md">
+    <DatePicker
+      {...args}
+      displayFormat="abbreviated"
+      value={{ year: 2024, month: 3, day: 15 }}
+    />
+  </Card>
+);
+AbbreviatedFormat.args = {
+  label: "Abbreviated Format",
+  placeholder: "Select date",
+};
+
+// Story 11: Full Format - Complete date display
+export const FullFormat = (args: any) => (
+  <Card className="p-6 max-w-md">
+    <DatePicker
+      {...args}
+      displayFormat="full"
+      value={{ year: 2024, month: 3, day: 15 }}
+    />
+  </Card>
+);
+FullFormat.args = {
+  label: "Full Format",
+  placeholder: "Select date",
+};
+
+// Story 12: Validation Example
 export const WithValidation = () => {
   const [validationMessages, setValidationMessages] = useState({});
   const minDate = { day: 1, month: 1, year: 2024 };
@@ -204,17 +239,21 @@ export const WithValidation = () => {
     }
 
     const { errorCode } = errorObject;
-    
-    if (errorCode === 'INVALID_DATE') {
-      return { error: ['Please enter a valid date.'] };
+
+    if (errorCode === "INVALID_DATE") {
+      return { error: ["Please enter a valid date."] };
     }
 
-    if (errorCode === 'MIN_EXCEEDED') {
-      return { error: [`Please enter a date after ${JutroDateToString(minDate)}.`] };
+    if (errorCode === "MIN_EXCEEDED") {
+      return {
+        error: [`Please enter a date after ${JutroDateToString(minDate)}.`],
+      };
     }
 
-    if (errorCode === 'MAX_EXCEEDED') {
-      return { error: [`Please enter a date before ${JutroDateToString(maxDate)}.`] };
+    if (errorCode === "MAX_EXCEEDED") {
+      return {
+        error: [`Please enter a date before ${JutroDateToString(maxDate)}.`],
+      };
     }
   };
 
@@ -238,7 +277,9 @@ export const WithValidation = () => {
         maxDate={maxDate}
         stateMessages={validationMessages}
       />
-      <p className="text-sm text-gray-600 mt-2">Try entering dates outside 2024 or invalid dates</p>
+      <p className="text-sm text-gray-600 mt-2">
+        Try entering dates outside 2024 or invalid dates
+      </p>
     </Card>
   );
 };
